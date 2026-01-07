@@ -12,10 +12,17 @@ export async function updateEndpoint(id: string, data: any) {
          return { success: false, error: 'Unauthorized' };
      }
 
-     const { projectId: _projectId, ...rest } = data; // Don't update projectId usually, or handle it carefully
+     // Filter out system fields that shouldn't be manually updated
+     const { 
+        projectId: _projectId, 
+        id: _id, 
+        createdAt: _createdAt, 
+        updatedAt: _updatedAt, 
+        project: _project,
+        ...rest 
+     } = data;
      
-     console.log('Server Action updateEndpoint data keys:', Object.keys(rest));
-     // console.log('Server Action requestSpec:', rest.requestSpec);
+
      
      // TODO: Check if user owns project
      

@@ -33,9 +33,8 @@ export default function EndpointEditor({ initialData }: EndpointEditorProps) {
   // Helper helper to cast Json to SchemaNode safely
   const requestSpec = (data.requestSpec as unknown as SchemaNode) || { type: 'object', properties: [] };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (field: keyof Endpoint, value: any) => {
-    console.log(`EndpointEditor handleChange: ${field}`, value);
     setData((prev) => ({ ...prev, [field]: value }));
     setDirty(true);
   };

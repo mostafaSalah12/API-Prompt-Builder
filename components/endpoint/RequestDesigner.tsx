@@ -42,7 +42,6 @@ export function RequestDesigner({ value, query, headers, mode = 'request', onCha
                         </h3>
                     )}
                     <Button size="sm" variant="ghost" className="text-blue-600 gap-1 hover:bg-blue-50 dark:hover:bg-blue-500/10" onClick={() => {
-                         console.log('Adding new field...');
                          const newProps = [...(activeSchema.properties || [])];
                          const newId = `field_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
                          newProps.push({ 
@@ -51,7 +50,6 @@ export function RequestDesigner({ value, query, headers, mode = 'request', onCha
                             name: 'newField', 
                             required: true 
                          });
-                         console.log('New props:', newProps);
                          handleUpdate({ ...activeSchema, properties: newProps });
                     }}>
                         <Plus size={16} />
