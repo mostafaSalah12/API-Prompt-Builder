@@ -10,6 +10,9 @@ A Web tool  designed to help developers build, test, and manage API prompts and 
 ![API Designer](https://github.com/mostafaSalah12/API-Prompt-Builder/blob/main/docs/screen-apis.png?raw=true)
 *Design schemas, set permissions, and generate AI prompts instantly.*
 
+![Endpoint Details](https://github.com/mostafaSalah12/API-Prompt-Builder/blob/main/docs/endpoint-details.png?raw=true)
+*Fine-tune your endpoint metadata and generate production-ready prompts.*
+
 ## Prerequisites
 
 - **Node.js**: v18.17.0 or higher.
