@@ -2,6 +2,14 @@
 
 A Next.js application designed to help developers build, test, and manage API prompts and specifications.
 
+## 📸 Screenshots
+
+![Home Dashboard](https://github.com/mostafaSalah12/API-Prompt-Builder/blob/main/docs/screen-home.png?raw=true)
+*Manage your projects and endpoints efficiently.*
+
+![API Designer](https://github.com/mostafaSalah12/API-Prompt-Builder/blob/main/docs/screen-apis.png?raw=true)
+*Design schemas, set permissions, and generate AI prompts instantly.*
+
 ## Prerequisites
 
 - **Node.js**: v18.17.0 or higher.

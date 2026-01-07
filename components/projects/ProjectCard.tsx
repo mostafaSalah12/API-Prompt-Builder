@@ -9,12 +9,13 @@ import { deleteProject } from '@/app/(dashboard)/projects/actions';
 import { Modal } from '@/components/ui/Modal';
 import { Button } from '@/components/ui/Button';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function ProjectCard({ project }: { project: any }) {
   const [showMenu, setShowMenu] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   
-  const Icon = (Icons as any)[project.icon] || Icons.Folder;
+  const Icon = (Icons as unknown as Record<string, React.ComponentType<{ size?: number }>>)[project.icon] || Icons.Folder;
   const color = project.color || 'blue';
   
   const getColorClasses = (c: string) => {

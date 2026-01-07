@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Box, LogOut } from 'lucide-react';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { logout } from '@/app/actions/auth';
@@ -46,7 +47,13 @@ export function Header() {
           
           <div className="size-9 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden ring-2 ring-slate-100 dark:ring-slate-800 cursor-pointer hover:ring-blue-500 transition-all">
              {/* Robot Avatar */}
-             <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Robot" alt="User" />
+             <Image
+                src="https://avatars.githubusercontent.com/u/124599?v=4"
+                alt="User"
+                width={36} // Set width based on parent div's size-9 (36px)
+                height={36} // Set height based on parent div's size-9 (36px)
+                className="h-full w-full object-cover rounded-full border border-slate-200 dark:border-slate-700" // Adjusted class to fill parent div
+             />
           </div>
         </div>
       </div>

@@ -3,11 +3,10 @@
 interface PersonaSelectorProps {
   mode: string | null;
   personaKey: string | null;
-  onChange: (field: string, val: any) => void;
+  onChange: (field: string, value: unknown) => void;
 }
 
-export function PersonaSelector({ mode, personaKey, onChange }: PersonaSelectorProps) {
-    const currentMode = mode || 'auto';
+export function PersonaSelector({ personaKey, onChange }: PersonaSelectorProps) {
     const currentKey = personaKey || 'senior';
 
     const personas = [

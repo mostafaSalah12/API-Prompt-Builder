@@ -5,8 +5,10 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 
 // Debounce helper
-function debounce(func: Function, wait: number) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function debounce<T extends (...args: any[]) => void>(func: T, wait: number) {
   let timeout: NodeJS.Timeout;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return function executedFunction(...args: any[]) {
     const later = () => {
       clearTimeout(timeout);

@@ -4,6 +4,7 @@ import { prisma } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 import { getSession } from '@/lib/auth';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function updateEndpoint(id: string, data: any) {
   try {
      const session = await getSession();
@@ -11,7 +12,7 @@ export async function updateEndpoint(id: string, data: any) {
          return { success: false, error: 'Unauthorized' };
      }
 
-     const { projectId, ...rest } = data; // Don't update projectId usually, or handle it carefully
+     const { projectId: _projectId, ...rest } = data; // Don't update projectId usually, or handle it carefully
      
      console.log('Server Action updateEndpoint data keys:', Object.keys(rest));
      // console.log('Server Action requestSpec:', rest.requestSpec);

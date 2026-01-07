@@ -19,6 +19,8 @@ export function generatePromptContent(endpoint: Endpoint): string {
   const personaKey = endpoint.personaKey || 'senior';
   const systemPrompt = PERSONA_TEMPLATES[personaKey] || PERSONA_TEMPLATES['senior'];
   
+
+
   const roles = (endpoint.roles as string[]) || [];
   const rolesLine = roles.length > 0 ? roles.join(', ') : 'not specified';
   
@@ -28,6 +30,7 @@ export function generatePromptContent(endpoint: Endpoint): string {
   }
 
   // Request & Body
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const reqBody = endpoint.requestSpec as any;
   const hasReqBody = reqBody && Object.keys(reqBody).length > 0;
   
@@ -49,6 +52,7 @@ Instructions: implement the endpoint without assuming body fields. If body is re
   }
 
   // Response
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const resBody = endpoint.responseSpec as any;
   const hasResBody = resBody && Object.keys(resBody).length > 0;
   
@@ -89,7 +93,7 @@ Instructions: return a minimal success response with status 200 and JSON \`{ "ok
   
   // User Preferences
   const prefs = Object.entries(endpoint.promptPrefs as object || {})
-    .filter(([_, v]) => v)
+    .filter(([, v]) => v)
     .map(([k]) => `- ${LABELS[k] || k}`)
     .join('\n');
 

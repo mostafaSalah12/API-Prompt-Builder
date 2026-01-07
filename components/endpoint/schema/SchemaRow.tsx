@@ -23,7 +23,7 @@ export function SchemaRow({ node, path, isRoot, activeTab, onUpdate }: RowProps)
     const depth = path.length;
     const paddingLeft = depth === 0 ? 20 : depth * 20 + 20;
 
-    const handleChange = (field: keyof SchemaNode, val: any) => {
+    const handleChange = (field: keyof SchemaNode, val: unknown) => {
         onUpdate(path, { ...node, [field]: val });
     };
 
@@ -75,8 +75,8 @@ export function SchemaRow({ node, path, isRoot, activeTab, onUpdate }: RowProps)
                         <select 
                             value={node.type}
                             onChange={(e) => {
-                                const newType = e.target.value;
-                                const updates: any = { type: newType };
+                                const newType = e.target.value as SchemaNode['type'];
+                                const updates: Partial<SchemaNode> = { type: newType };
                                 if (newType === 'object' && !node.properties) updates.properties = [];
                                 
                                 // Auto-expand when switching to object/array
@@ -85,7 +85,7 @@ export function SchemaRow({ node, path, isRoot, activeTab, onUpdate }: RowProps)
                                 }
 
                                 handleChange('type', newType);
-                                onUpdate(path, { ...node, type: newType as any, ...(newType === 'object' && !node.properties ? { properties: [] } : {}) });
+                                onUpdate(path, { ...node, type: newType, ...(newType === 'object' && !node.properties ? { properties: [] } : {}) });
                             }}
                             className="flex-1 bg-slate-100 dark:bg-[#111a22] border-none rounded text-xs px-2 py-1.5 text-slate-700 dark:text-slate-300 focus:ring-1 focus:ring-blue-500 font-medium"
                         >
@@ -99,7 +99,7 @@ export function SchemaRow({ node, path, isRoot, activeTab, onUpdate }: RowProps)
                         {/* String Formats */}
                         {node.type === 'string' && (
                             <select 
-                                value={(node as any).format || ''}
+                                value={(node as unknown as { format?: string }).format || ''}
                                 onChange={(e) => handleChange('format', e.target.value)}
                                 className="flex-1 bg-slate-100 dark:bg-[#111a22] border-none rounded text-xs px-2 py-1.5 text-slate-500 dark:text-slate-400 focus:ring-1 focus:ring-blue-500"
                             >
@@ -116,7 +116,7 @@ export function SchemaRow({ node, path, isRoot, activeTab, onUpdate }: RowProps)
                         {/* Number Formats */}
                         {node.type === 'number' && (
                             <select 
-                                value={(node as any).format || ''}
+                                value={(node as unknown as { format?: string }).format || ''}
                                 onChange={(e) => handleChange('format', e.target.value)}
                                 className="flex-1 bg-slate-100 dark:bg-[#111a22] border-none rounded text-xs px-2 py-1.5 text-slate-500 dark:text-slate-400 focus:ring-1 focus:ring-blue-500"
                             >

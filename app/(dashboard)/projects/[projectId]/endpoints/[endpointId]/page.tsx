@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import EndpointEditor from '@/components/endpoint/EndpointEditor';
 
 export default async function EndpointEditorPage({ params }: { params: Promise<{ projectId: string; endpointId: string }> }) {
-  const { projectId, endpointId } = await params;
+  const { projectId: _projectId, endpointId } = await params;
 
   const endpoint = await prisma.endpoint.findUnique({
     where: { id: endpointId },

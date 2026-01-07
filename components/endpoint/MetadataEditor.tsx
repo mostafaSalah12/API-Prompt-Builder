@@ -6,6 +6,7 @@ import { Info, Shield, X } from 'lucide-react';
 
 interface MetadataEditorProps {
   data: Endpoint;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange: (field: keyof Endpoint, value: any) => void;
 }
 

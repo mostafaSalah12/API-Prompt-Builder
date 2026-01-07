@@ -28,7 +28,7 @@ const ICONS = [
 export function ProjectIconSelector({ value, onChange }: ProjectIconSelectorProps) {
     const [isOpen, setIsOpen] = useState(false);
 
-    const CurrentIcon = (Icons as any)[value.icon] || Icons.Folder;
+    const CurrentIcon = (Icons as unknown as Record<string, Icons.LucideIcon>)[value.icon] || Icons.Folder;
 
     return (
         <div className="flex flex-col gap-3">
@@ -75,7 +75,7 @@ export function ProjectIconSelector({ value, onChange }: ProjectIconSelectorProp
                         <label className="text-xs font-bold text-slate-500 uppercase mb-3 block">Icon</label>
                         <div className="grid grid-cols-6 sm:grid-cols-8 gap-3">
                             {ICONS.map((iconName) => {
-                                const Icon = (Icons as any)[iconName];
+                                const Icon = (Icons as unknown as Record<string, Icons.LucideIcon>)[iconName];
                                 return (
                                     <button
                                         key={iconName}

@@ -1,14 +1,11 @@
 import Link from 'next/link';
 import { prisma } from '@/lib/db';
 import { notFound } from 'next/navigation';
-import { Button } from '@/components/ui/Button';
 import { 
-    ChevronLeft, Plus, Lock, Globe, Shield, 
-    Edit, Copy, Trash2, ChevronRight 
+    Plus, Lock, Globe, Edit, ChevronLeft, ChevronRight 
 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { Endpoint } from '@prisma/client';
-import { deleteEndpoint } from '@/app/actions/endpoint';
 import { EndpointListControls } from '@/components/project/EndpointListControls';
 import { CopyPromptButton } from '@/components/endpoint/CopyPromptButton';
 import { DeleteEndpointButton } from '@/components/endpoint/DeleteEndpointButton';

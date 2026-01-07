@@ -39,7 +39,7 @@ export function DashboardControls() {
             type="text"
             placeholder="Search projects..."
             defaultValue={currentSearch}
-            onChange={(e) => debouncedSearch(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => debouncedSearch(e.target.value)}
             className="block w-full rounded-lg border-0 py-2.5 pl-10 pr-4 text-slate-900 dark:text-white ring-1 ring-inset ring-slate-200 dark:ring-slate-700 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 bg-slate-50 dark:bg-[#111a22] sm:text-sm sm:leading-6 transition-shadow"
           />
         </div>
@@ -65,12 +65,13 @@ export function DashboardControls() {
   );
 }
 
-function debounce(func: Function, wait: number) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function debounce<T extends (...args: any[]) => void>(func: T, wait: number) {
   let timeout: NodeJS.Timeout;
-  return function executedFunction(...args: any[]) {
+  return function (this: unknown, ...args: Parameters<T>) {
     const later = () => {
       clearTimeout(timeout);
-      func(...args);
+      func.apply(this, args);
     };
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
