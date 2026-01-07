@@ -1,6 +1,6 @@
 # Prototype Designer (API Prompt Builder)
 
-A Next.js application designed to help developers build, test, and manage API prompts and specifications.
+A Web tool  designed to help developers build, test, and manage API prompts and specifications.
 
 ## 📸 Screenshots
 
