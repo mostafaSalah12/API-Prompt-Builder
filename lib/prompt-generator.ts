@@ -26,7 +26,9 @@ export function generatePromptContent(endpoint: Endpoint): string {
   
   let authLine = endpoint.security || 'public';
   if (endpoint.security === 'secure') {
-      authLine += ' (mechanism not specified)';
+      authLine += endpoint.authMechanism 
+        ? ` (${endpoint.authMechanism})` 
+        : ' (mechanism not specified)';
   }
 
   // Request & Body

@@ -34,6 +34,7 @@ model Endpoint {
   moduleName   String?
   businessDesc String?
   security     String?  // "secure" | "open"
+  authMechanism String? // "jwt" | "cookie" | "api_key" | "bearer" | "basic"
   roles        Json?    // ["admin","user","instructor"] 
 
   // Prompt persona

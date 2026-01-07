@@ -123,6 +123,29 @@ export function MetadataEditor({ data, onChange }: MetadataEditorProps) {
             <span className="ms-3 text-sm font-medium text-slate-700 dark:text-slate-300">Secured Route</span>
           </label>
         </div>
+
+
+        {data.security === 'secure' && (
+          <div className="mb-5 p-4 bg-slate-50 dark:bg-[#111a22] rounded-lg border border-slate-200 dark:border-slate-700">
+             <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-2 block">
+                Authentication Mechanism
+             </label>
+             <select
+                value={data.authMechanism || ''}
+                onChange={(e) => onChange('authMechanism' as keyof Endpoint, e.target.value)}
+                className="w-full h-10 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-[#1e2936] px-3 text-sm focus:ring-2 focus:ring-blue-500"
+             >
+                <option value="">Select Mechanism (Default)</option>
+                <option value="jwt">JWT (JSON Web Token)</option>
+                <option value="bearer">Bearer Token</option>
+                <option value="cookie">Session Cookie</option>
+                <option value="api_key">API Key (Header)</option>
+                <option value="basic">Basic Auth</option>
+                <option value="oauth2">OAuth 2.0</option>
+             </select>
+          </div>
+        )}
+
         <div>
           <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1.5 block">Required Roles</label>
           <div 
