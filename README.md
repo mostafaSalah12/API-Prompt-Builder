@@ -22,7 +22,7 @@ A Next.js application designed to help developers build, test, and manage API pr
 1.  **Clone the repository:**
     ```bash
     git clone <repository-url>
-    cd prototype-designer
+    cd API-Prompt-Builder
     ```
 
 2.  **Install dependencies:**

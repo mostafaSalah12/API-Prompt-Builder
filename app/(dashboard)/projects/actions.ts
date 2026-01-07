@@ -11,6 +11,8 @@ export async function createProject(formData: FormData) {
   
   if (!name) return;
 
+  let projectId: string | null = null;
+
   try {
     const project = await prisma.project.create({
       data: {
@@ -20,14 +22,16 @@ export async function createProject(formData: FormData) {
         color,
       },
     });
-    
-    redirect(`/projects/${project.id}`);
+    projectId = project.id;
   } catch (error) {
     console.error("Failed to create project:", error);
-    // In a real app we would return { error: ... }
     throw error;
   }
+
+  if (projectId) {
+    redirect(`/projects/${projectId}`);
   }
+}
 
 
 export async function deleteProject(id: string) {
